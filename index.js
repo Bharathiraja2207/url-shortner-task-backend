@@ -39,12 +39,12 @@ if(url){
   .collection("urlshortner")
    .insertOne({
     originalUrl: url,
-    shortUrl: `http://localhost:2001/${shortId}`,
+    shortUrl: `https://url-shortner-task-backend.vercel.app/${shortId}`,
   });
   // Return shortened URL
   res.json({
       originalUrl: url,
-      shortUrl: `http://localhost:2001/${shortId}`,
+      shortUrl: `https://url-shortner-task-backend.vercel.app/${shortId}`,
     });
   }else{res.status(400).json({ message: 'url not defind' })}
 });
@@ -56,7 +56,7 @@ app.get('/:shortId', async (req, res) => {
   const url = await client
   .db("urlshortner")
   .collection("urlshortner")
-  .findOne({ shortUrl: `http://localhost:2001/${shortId}` });
+  .findOne({ shortUrl: `https://url-shortner-task-backend.vercel.app/${shortId}` });
 
   if (!url) {
     return res.status(404).send('URL not found');
